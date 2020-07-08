@@ -29,7 +29,7 @@
 		<!-- Работа с информацией о книгах -->
 
 		<div class="adminFunctionConteiner">
-			<div id="adminExit">Выйти</div>
+			<a id="adminExit" href="modules/userExit.php">Выйти</a>
 			<h1>Список книг:</h1>
 			<table>
 				<tr>
@@ -78,7 +78,7 @@
 		<!-- Работа с информацией авторах -->
 
 		<div class="adminFunctionConteiner">
-			<h1>Список книг:</h1>
+			<h1>Список авторов:</h1>
 			<table>
 				<tr>
 					<th>Фамилия</th>
