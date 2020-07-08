@@ -60,7 +60,8 @@
 	padding: 0;
 }
 .adminInput > input{
-	height: 20px;
+	height: 15px;
 	font-size: 0.8em;
 	border-radius: 5px;
+	padding: 3px;
 }

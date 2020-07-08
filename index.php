@@ -36,13 +36,11 @@
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<div id="bookList">
-		<div class="adminInput">
+		<div id="autorisation" class="adminInput">
 			<h1>Администрирование:</h1>
-			<input type="text" placeholder="Логин:">
-			<input type="password" placeholder="Пароль:">
-			<div class="button">
-				Вход
-			</div>
+			<input type="text" v-model="login" placeholder="Логин:">
+			<input type="password" v-model="password" placeholder="Пароль:">
+			<div class="button" @click="input">Вход</div>
 		</div>
 		<?php
 
@@ -98,6 +96,7 @@
 
 		?>
 	</div>
-	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>
