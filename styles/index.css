@@ -1,0 +1,66 @@
+.authorName{
+	border-top: 1px solid #222222;
+	text-align: center;
+	font-size: 1.3em;
+	padding: 10px 0px 10px 0px;
+}
+#bookList > ul{
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+#bookList > ul > li{
+	display: block;
+	border: 1px solid #222222;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+.bookName{
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.bookCountPages, .bookYear{
+	text-align: left;
+	font-size: 1em;
+	margin-top: 3px;
+}
+.bookInfo{
+	margin-top: 5px;
+	border-top: 1px solid #222222;
+	font-size: 1em;
+	text-align: justify;
+}
+.authorCountBook{
+	background-color: #222222;
+	color: #FFFFFF;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 25px;
+	margin-bottom: 10px;
+}
+.adminInput{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin: auto;
+	grid-template-rows: 30px;
+	grid-gap: 10px;
+	padding: 10px 0px 10px 0px;
+}
+.adminInput > h1{
+	font-size: 1em;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin: 0;
+	padding: 0;
+}
+.adminInput > input{
+	height: 20px;
+	font-size: 0.8em;
+	border-radius: 5px;
+}

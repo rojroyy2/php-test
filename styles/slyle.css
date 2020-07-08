@@ -1,0 +1,32 @@
+body{
+	background-color: #64A8A8;
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}
+#bookList{
+	border: 2px solid #222222;
+	background-color: #A4C0C0;
+	width: 50%;
+	display: grid;
+}
+.button{
+	background-color: #222222;
+	color: #ffffff;
+	font-size: 1.1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 25px;
+	border-radius: 15px;
+	border: 2px solid #FFFFFF;
+}
+.button:hover{
+	background-color: #FFFFFF;
+	color: #222222;
+	font-weight: bold;
+	cursor: pointer;
+	border: 2px solid #222222;
+	transition: all 0.5s ease;
+}
