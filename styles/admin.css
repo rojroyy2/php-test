@@ -1,0 +1,76 @@
+#adminFunctionConteiner{
+	margin: 2px 0px 20px 0px;
+	border: 2px solid #222222;
+	width: 50%;
+	background-color: #A4C0C0;
+}
+#adminExit{
+	background-color: #222222;
+	color: #FFFFFF;
+	font-size: 1.1em;
+	text-align: center;
+	text-decoration: underline;
+	display: block;
+}
+#adminExit:hover{
+	cursor: pointer;
+}
+.adminFunctionConteiner > h1{
+	font-size: 1.1em;
+	margin: 10px 0px 10px 0px;
+	text-align: center;
+}
+.adminFunctionConteiner > table{
+	width: 100%;
+	border: 2px solid #222222;
+	margin-bottom: 10px;
+	border-collapse:collapse;
+	border-spacing:0;
+}
+.adminFunctionConteiner > table > tbody > tr > th{
+	border: 2px solid #222222;
+	color: #FFFFFF;
+	background-color: #222222;
+}
+.adminFunctionConteiner > table > tbody > tr > td{
+	border: 2px solid #222222;
+	padding: 2px 0px 2px 2px;
+}
+.adminFunctionConteiner > table > tbody > tr{
+	background-color: #FFFFFF;
+}
+.adminFunctionConteiner > table > tbody > tr:hover{
+	cursor: pointer;
+	background-color: #222222;
+	color: #FFFFFF;
+	transition: all 0.2s ease;
+}
+.buttonConteiner{
+	margin-left: 30%;
+	display: flex;
+	justify-content: center;
+	width: 40%;
+	margin-bottom: 10px;
+}
+.infoConteiner{
+	border-top: 2px solid #222222;
+	padding-top: 10px;
+	border-bottom: 2px solid #222222;
+	margin: 0px 1% 0px 1%;
+	width: 98%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+}
+.infoConteiner > textarea{
+	grid-column: 4 / 1;
+	height: 50px;
+}
+.infoConteiner > .buttonConteiner{
+	grid-column: 4 / 1;
+}
+.status{
+	text-align: center;
+	font-size: 1.2em;
+}
