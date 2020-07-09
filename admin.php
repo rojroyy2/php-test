@@ -24,6 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/admin.css">
 </head>
 <body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<div id="adminFunctionConteiner">
 
 		<!-- Работа с информацией о книгах -->
@@ -38,39 +39,30 @@
 					<th>Год издания</th>
 					<th>Объём</th>
 				</tr>
-				<?php
-
-					$bookListQuery = mysqli_query($link, "SELECT `books`.`id`, `books`.`name`, `books`.`yeaк_wrie`, `books`.`count_pages`, concat(`author`.`surname`, ' ', substring(`author`.`name`, 1, 1), '. ', substring(`author`.`patronymic`, 1, 1), '.') as `author` FROM `books` LEFT JOIN `author` ON `books`.`author` = `author`.`id` ORDER BY `books`.`name`;");
-
-					while ($bookList = mysqli_fetch_assoc($bookListQuery)){
-
-				?>
-				<tr data-id="<?php echo $bookList['id']; ?>">
-					<td><?php echo $bookList['name']; ?></td>
-					<td><?php echo $bookList['author']; ?></td>
-					<td><?php echo $bookList['yeaк_wrie']; ?></td>
-					<td><?php echo $bookList['count_pages']; ?> страниц</td>
+				<tr v-for="elem in books.list" v-bind:data-id="elem.id" @click="booksTableClick">
+					<td>{{ elem.name }}</td>
+					<td>{{ elem.author }}</td>
+					<td>{{ elem.yeaк_write }}</td>
+					<td>{{ elem.count_pages }} страниц</td>
 				</tr>
-				<?php
-
-					}
-
-				?>
 			</table>
 			<div class="buttonConteiner">
-				<div class="button">Удалить</div>
-				<div class="button">Добавить</div>
-				<div class="button">Изменить</div>
+				<div class="button" @click="bookDel">Удалить</div>
+				<div class="button" @click="addBookWindowShow">Добавить</div>
+				<div class="button" @click="editInfoBookWindowShow">Изменить</div>
 			</div>
-			<div class="status">Ошибка</div>
-			<div class="infoConteiner">
-				<input type="text" placeholder="Название">
-				<input type="text" placeholder="Год издания">
-				<input type="text" placeholder="Количество страниц">
-				<textarea name="" id="" placeholder="Краткое описание:"></textarea>
+			<div class="status" v-if="books.statusShow.length != 0">{{ books.statusShow }}</div>
+			<div class="infoConteiner col4" v-if="books.info.show == true">
+				<input type="text" placeholder="Название" v-model="books.info.name">
+				<input type="number" placeholder="Год издания" v-model="books.info.year">
+				<input type="number" placeholder="Количество страниц" v-model="books.info.count">
+				<select placeholder="Автор" name="" id="" v-model="books.info.author">
+					<option v-for="elem in books.selectList" v-bind:value="elem.id">{{ elem.author }}</option>
+				</select>
+				<textarea name="" id="" placeholder="Краткое описание:" v-model="books.info.preview"></textarea>
 				<div class="buttonConteiner">
-					<div class="button">Отмена</div>
-					<div class="button">Сохранить</div>
+					<div class="button" @click="bookInfoClear">Отмена</div>
+					<div class="button" @click="bookInfoSave">Сохранить</div>
 				</div>
 			</div>
 		</div>
@@ -86,44 +78,36 @@
 					<th>Отчество</th>
 					<th>Количество книг</th>
 				</tr>
-				<?php
-
-					$authorListQuery = mysqli_query($link, "SELECT `author`.`surname`, `author`.`name`, `author`.`patronymic`, count(`books`.`id`) as `count` FROM `books` LEFT JOIN `author` ON `author`.`id` = `books`.`author` GROUP BY `books`.`author` ORDER BY `author`.`surname`;");
-
-					while ($authorList = mysqli_fetch_assoc($authorListQuery)){
-
-				?>
-				<tr data-id="<?php echo $authorList['id']; ?>">
-					<td><?php echo $authorList['surname']; ?></td>
-					<td><?php echo $authorList['name']; ?></td>
-					<td><?php echo $authorList['patronymic']; ?></td>
-					<td><?php echo $authorList['count']; ?> книга</td>
+				<tr v-for="elem in author.list" v-bind:data-id="elem.id" @click="authorTableClick">
+					<td>{{ elem.surname }}</td>
+					<td>{{ elem.name }}</td>
+					<td>{{ elem.patronymic }}</td>
+					<td>{{ elem.count }}</td>
 				</tr>
-				<?php
-
-					}
-
-				?>
 			</table>
 			<div class="buttonConteiner">
-				<div class="button">Удалить</div>
-				<div class="button">Добавить</div>
-				<div class="button">Изменить</div>
+				<div class="button" @click="authorDel">Удалить</div>
+				<div class="button" @click="addNewAuthor">Добавить</div>
+				<div class="button" @click="editInfoAuthor">Изменить</div>
 			</div>
-			<div class="status">Ошибка</div>
-			<div class="infoConteiner">
-				<input type="text" placeholder="Фамилия">
-				<input type="text" placeholder="Имя">
-				<input type="text" placeholder="Отчество">
+			<div class="status" v-if="author.statusShow.length > 0">{{ author.statusShow }}</div>
+			<div class="infoConteiner" v-if="author.info.show">
+				<input type="text" placeholder="Фамилия" v-model="author.info.surname">
+				<input type="text" placeholder="Имя" v-model="author.info.name">
+				<input type="text" placeholder="Отчество" v-model="author.info.patronymic">
 				<div class="buttonConteiner">
-					<div class="button">Отмена</div>
-					<div class="button">Сохранить</div>
+					<div class="button" @click="authorInfoClear">Отмена</div>
+					<div class="button" @click="saveInfoAuthor">Сохранить</div>
 				</div>
 			</div>
 		</div>
 		</div>
 	</div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="scripts/admin.js"></script>
+<?php
+	$authorListQuery = mysqli_query($link, "SELECT `author`.`id`, `author`.`surname`, `author`.`name`, `author`.`patronymic`, count(`books`.`id`) as `count` FROM `books` LEFT JOIN `author` ON `author`.`id` = `books`.`author` GROUP BY `books`.`author` ORDER BY `author`.`surname`;");
+?>
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </html>

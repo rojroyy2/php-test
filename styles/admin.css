@@ -59,16 +59,18 @@
 	margin: 0px 1% 0px 1%;
 	width: 98%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 10px;
 	grid-row-gap: 10px;
 }
+.col4{
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 .infoConteiner > textarea{
-	grid-column: 4 / 1;
+	grid-column: 5 / 1;
 	height: 50px;
 }
 .infoConteiner > .buttonConteiner{
-	grid-column: 4 / 1;
+	grid-column: 5 / 1;
 }
 .status{
 	text-align: center;

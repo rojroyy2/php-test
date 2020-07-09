@@ -17,7 +17,7 @@ var autorisation = new Vue({
 					data: formData
 				})
 				.then(function(response){
-console.log(response['data']);
+
 					switch(response['data']['status']) {
 						case 'error0':
 							alert('Неверный логин или пароль!');
