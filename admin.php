@@ -30,7 +30,8 @@
 		<!-- Работа с информацией о книгах -->
 
 		<div class="adminFunctionConteiner">
-			<a id="adminExit" href="modules/userExit.php">Выйти</a>
+			<a class="admin" href="modules/userExit.php">Выйти</a>
+			<a class="admin" href="http://php-test/api/apiController.php">API Контроллер</a>
 			<h1>Список книг:</h1>
 			<table>
 				<tr>
@@ -42,7 +43,7 @@
 				<tr v-for="elem in books.list" v-bind:data-id="elem.id" @click="booksTableClick">
 					<td>{{ elem.name }}</td>
 					<td>{{ elem.author }}</td>
-					<td>{{ elem.yeaк_write }}</td>
+					<td>{{ elem.year_write }}</td>
 					<td>{{ elem.count_pages }} страниц</td>
 				</tr>
 			</table>
@@ -109,5 +110,4 @@
 <?php
 	$authorListQuery = mysqli_query($link, "SELECT `author`.`id`, `author`.`surname`, `author`.`name`, `author`.`patronymic`, count(`books`.`id`) as `count` FROM `books` LEFT JOIN `author` ON `author`.`id` = `books`.`author` GROUP BY `books`.`author` ORDER BY `author`.`surname`;");
 ?>
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </html>

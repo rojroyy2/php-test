@@ -92,7 +92,7 @@ var adminFunctionConteiner = new Vue({
 					.then(function(response){
 
 						adminFunctionConteiner.books.info.name = response['data']['name'];
-						adminFunctionConteiner.books.info.year = response['data']['yeaк_write'];
+						adminFunctionConteiner.books.info.year = response['data']['year_write'];
 						adminFunctionConteiner.books.info.count = response['data']['count_pages'];
 						adminFunctionConteiner.books.info.author = response['data']['author'];
 						adminFunctionConteiner.books.info.preview = response['data']['preview'];
@@ -172,7 +172,7 @@ var adminFunctionConteiner = new Vue({
 				formData = {
 					id: parseInt(this.books.id),
 					name: this.books.info.name,
-					yeaк_write: parseInt(this.books.info.year),
+					year_write: parseInt(this.books.info.year),
 					count_pages: parseInt(this.books.info.count),
 					author: parseInt(this.books.info.author),
 					preview: this.books.info.preview
@@ -228,7 +228,7 @@ var adminFunctionConteiner = new Vue({
 							id: response['data']['id'],
 							name: formData.name,
 							author: authorName,
-							yeaк_write: formData.yeaк_write,
+							year_write: formData.year_write,
 							count_pages: formData.count_pages
 						};
 						adminFunctionConteiner.books.list.push(newBook);
@@ -315,7 +315,7 @@ var adminFunctionConteiner = new Vue({
 		editInfoAuthor(){
 
 			if (this.author.id == null){
-				console.log("Сначала выберите автора!");
+				this.author.statusShow = "Сначала выберите автора!";
 			}else{
 
 				// Перенос информации (для редактирования) из списка авторов в поля ввода, чтобы не нагружать сервер запросами

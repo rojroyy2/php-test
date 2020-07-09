@@ -4,7 +4,7 @@
 	width: 50%;
 	background-color: #A4C0C0;
 }
-#adminExit{
+.admin{
 	background-color: #222222;
 	color: #FFFFFF;
 	font-size: 1.1em;
@@ -12,8 +12,11 @@
 	text-decoration: underline;
 	display: block;
 }
-#adminExit:hover{
+.admin:hover{
 	cursor: pointer;
+	transition: all 0.5s ease;
+	color: #222222;
+	background-color: #FFFFFF;
 }
 .adminFunctionConteiner > h1{
 	font-size: 1.1em;

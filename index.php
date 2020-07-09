@@ -48,7 +48,7 @@
 
 			// Запрос к БД
 
-			$bookQuery = mysqli_query($link, "SELECT `books`.`name` as `bookName`, `books`.`yeaк_write` as `yaer`, `books`.`count_pages` as `countPages`, substring(`books`.`preview`, 1, 150) as `preview`, concat(`author`.`surname`, ' ', `author`.`name`, ' ', `author`.`patronymic`) as `authorName`, `author`.`id` as `authorId` FROM `books` LEFT JOIN `author` ON `author`.`id` = `books`.`author` ORDER BY `author`.`id`;");
+			$bookQuery = mysqli_query($link, "SELECT `books`.`name` as `bookName`, `books`.`year_write` as `yaer`, `books`.`count_pages` as `countPages`, substring(`books`.`preview`, 1, 150) as `preview`, concat(`author`.`surname`, ' ', `author`.`name`, ' ', `author`.`patronymic`) as `authorName`, `author`.`id` as `authorId` FROM `books` LEFT JOIN `author` ON `author`.`id` = `books`.`author` ORDER BY `author`.`id`;");
 			
 			// Получаем количество произведений каждого автора
 
